@@ -1,0 +1,161 @@
+<head>
+      <title>transaction test</title>
+      <script src="buidl.js"></script>
+
+</head>
+
+<body>
+      <div class="box">
+            <h2>Transaction info:</h2>
+            <label for="">Destination Address: <span
+                        id="desAdr">bc1qqu677ayjpdd3dfy7qfu27z9r9seqrxgvvkjp30</span></label>
+            <br>
+            <label for="">Out Amount: <span id="amount">8500</span> &nbsp; Satushi</label>
+            <br>
+            <label for="">Change Address: <span id="changeAdr">bc1qqu677ayjpdd3dfy7qfu27z9r9seqrxgvvkjp30</span></label>
+            <br>
+            <label for="">Change Amount: <span id="changeAmount">1000</span> &nbsp; Satushi</label>
+            <br>
+            <label for="">WIF Change: <input type="number" id="wc" value="0"></input> </label>
+            <br>
+            <label for="">WIF Index: <input type="number" id="wi" value="1"></input> </label>
+            <br>
+            <label for="">TX Index: <input type="number" id="ti" value="3"></input> </label>
+            <br>
+            <br>
+            <button class="fr" onclick="send()">Send</button>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+      <script>
+
+            function send() {
+                  // Prepare the adressess
+                  var desAdr = document.getElementById('desAdr').innerHTML
+                  var amount = Number(document.getElementById('amount').innerHTML)
+                  var changeAdr = document.getElementById('changeAdr').innerHTML
+                  var changeAmount = Number(document.getElementById('changeAmount').innerHTML)
+                  var change = Number(document.getElementById('wc').value)
+                  var index = Number(document.getElementById('wi').value)
+                  var txIndex = Number(document.getElementById('ti').value)
+                  console.log(desAdr, amount, changeAdr, changeAmount, change, index)
+
+                  // set PK
+                  var zprv = 'zprvAdGnsKAHsBwuHzbNqJHQwYR79uu3J78ftRzTuA977C1Hh19dAwbUzZF88dEmb1pNzpuCqriRnTq86SFoh8xV1itRkikn5AfznXp5ibeCidq'
+
+
+
+
+                  console.info(det)
+
+
+                  var id = 1;
+                  var WIF = buidl.xprvToWIF(zprv, change, index);
+                  console.log(WIF.wif)
+
+                  var det = buidl.getDetails(WIF.wif)
+                  console.info(det)
+
+                  var newTestNet = {
+                        address: "BxSaEqhHd5Z9tdNpGhCfegtSLbCkTmskFs",
+                        private: "a4d02766411092ebe624475c8f5fcfb609879866757da54a618dc2d690eede19",
+                        public: "035d81515aa88155ddf3c81f014ed4cb2d523dea58bd1b065d1f87ca5add6f6319"
+                  }
+
+
+                  // var data = { "address": newTestNet.address, "amount": 100000 }
+                  // $.post('https://api.blockcypher.com/v1/bcy/test/faucet?token=e59c6bef23ed445380155df1b5963121   ', JSON.stringify(data))
+                  //       .then(function (d) { console.log(d) });
+
+
+                  // create Transaction
+                  var newTX = buidl.createTransaction('b', 'bc82df1d3538f541bbad640b105472e6560cd2dea8138068e91765e8b6293d93',
+                        txIndex, desAdr,
+                        amount, 'Kx5mS8xk6Masmum74ydFerGSdBZgDVRGNFxFKsoGwNXkT9ne72sU', changeAdr, changeAmount, 11512)
+                  console.info(newTX)
+
+                  // faund: 3bbb617819e12e4f1756ebcc1ad635e1b08728cf066d17fd8ff814c2cedde3d0
+
+                  // $.get('https://api.blockcypher.com/v1/bcy/test/addrs/' + newTestNet.address + '/balance')
+                  //       .then(function (d) { console.log(d) });
+
+
+                  /*
+                                    var newtx = {
+                                          inputs: [{ addresses: [newTestNet.address] }],
+                                          outputs: [{ addresses: ['C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn'], value: 1000 }]
+                                    };
+                  
+                                    var cURL =
+                                          $.post('https://api.blockcypher.com/v1/bcy/test/txs/new', JSON.stringify(newtx))
+                                                .then(function (d) { console.log(d) }).catch((f) => { console.log(f) });
+                  
+                  */
+
+
+                  //broadcats Transaction
+                  var pushtx = {
+                        tx: newTX.signedtx
+                  };
+                  $.post('https://api.blockcypher.com/v1/btc/main/txs/push', JSON.stringify(pushtx))
+                        .then(function (s) {
+                              console.log(s)
+                              // latestPush = s
+                        }).catch((f) => { console.log(f) });
+            }
+            send()
+
+      </script>
+</body>
+
+
+<style>
+      .sm {
+            max-width: 24px;
+      }
+
+
+      .fr {
+            margin-top: 1vh;
+            margin-left: 10vw;
+      }
+
+
+      td {
+            padding: 4px 8px;
+      }
+
+      th {
+            background-color: #cccbbb;
+            padding: 4px 8px;
+
+
+      }
+
+      tr:nth-child(odd) {
+            background-color: #dddddd;
+      }
+
+      .center {
+            text-align: center;
+      }
+
+      .box {
+            border: 1px black solid;
+            padding: 10px;
+      }
+
+      .step {
+            background-color: #cccccc;
+            padding: 10px;
+      }
+
+      .col5 {
+            width: 44vw;
+            margin: 1vw;
+      }
+
+      .row {
+            display: inline-flex;
+      }
+</style>

@@ -1,0 +1,83 @@
+<head>
+      <title>Faxlix - home</title>
+      <link rel="stylesheet" href="assets/css/fonts.css">
+
+</head>
+
+<body>
+      <h1>Faxlix Exchange</h1>
+      <h3>This is a an MVP of Exchange.</h3>
+      <p>Faxlix Exchange is a MVP showcasing essential functionalities required for a crypto exchange,
+            where basic chain-related functionalities for developing a crypto exchange are demonstrated.</p>
+
+
+
+      <br>
+      <br>
+      <br>
+
+      <button onclick="openAmin()">Open Admin</button> &nbsp;&nbsp; &nbsp;&nbsp;
+      <button onclick="openUser()">Open User</button> &nbsp;&nbsp; &nbsp;&nbsp;
+
+      <script>
+            function openAmin() {
+                  var ps = window.prompt("Please enter Admin password")
+                  if (ps == 'aass') {
+                        window.location.href = '/admin.html'
+                  } else {
+                        window.alert('Wrong password.')
+                  }
+            }
+            function openUser() {
+                  window.location.href = '/nru.html'
+            }
+      </script>
+
+      <style>
+            p {
+                  font-family: 'roboto';
+                  font-size: x-large;
+            }
+
+            button {
+                  background-color: black;
+                  color: aliceblue;
+                  padding: 10px;
+                  border: 1px white solid;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  font-size: 1.25rem;
+            }
+
+            button:hover {
+                  background-color: rgb(58, 58, 58);
+                  /* color: rgb(210, 213, 216); */
+                  padding: 10px;
+                  border: 1px rgb(223, 223, 223) solid;
+                  cursor: pointer;
+                  font-size: 1.25rem;
+            }
+
+            h1 {
+                  font-family: 'proxima';
+                  font-size: 4rem;
+            }
+
+            h3 {
+                  font-family: 'proxima';
+                  font-size: 2.5rem;
+                  font-weight: 500;
+            }
+      </style>
+      <!-- 
+      <p style="font-weight: 100;">Faxlix Exchange</p>
+      <p style="font-weight: 200;">Faxlix Exchange</p>
+      <p style="font-weight: 300;">Faxlix Exchange</p>
+      <p style="font-weight: 400;">Faxlix Exchange</p>
+      <p style="font-weight: 500;">Faxlix Exchange</p>
+      <p style="font-weight: 600;">Faxlix Exchange</p>
+      <p style="font-weight: 700;">Faxlix Exchange</p>
+      <p style="font-weight: 800;">Faxlix Exchange</p>
+      <p style="font-weight: 900;">Faxlix Exchange</p> -->
+
+</body>

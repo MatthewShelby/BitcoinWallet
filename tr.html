@@ -1,0 +1,178 @@
+<head>
+      <title> Transaction</title>
+      <script src="buidl.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+      <div class="box">
+            <h4>Create Transaction</h4>
+
+            <br>
+            <label for="">typei</label>
+            <br>
+            <input type="text" name="" id="typei" value="1">
+            <br>
+
+            <br>
+            <label for="">txidi</label>
+            <br>
+            <input type="text" name="" id="txidi"
+                  value="99353f213ceeb08e3e92daafa196c730236f6e1f83e99564690210af21540847">
+            <br>
+
+            <br>
+            <label for="">outni</label>
+            <br>
+            <input type="text" name="" id="outni" value="3">
+            <br>
+            <br>
+            <label for="">outputi</label>
+            <br>
+            <input type="text" name="" id="outputi" value="13oYcuDn1Fr5bnSVn9H3jpUpzcEyJ7zKzF">
+            <br>
+
+            <br>
+            <label for="">amounti - (transfering amount)</label>
+            <br>
+            <input type="text" name="" id="amounti" value="9737">
+            <br>
+
+            <br>
+            <label for="">wif / private key</label>
+            <br>
+            <input type="text" name="" id="wifi" value="KwxJ4TtgHmf6CwX6gNcsvsWPsSP4im4xSfLje8FcDLL637MoFcf1">
+            <br>
+
+            <!-- <br>
+            <label for="">changeout - where extra amount goes</label>
+            <br>
+            <input type="text" name="" id="changeout" value="tb1qvh0pwj4pr6se90dj60zd29pefcj0t3tx8d8384">
+            <br>
+
+            <br>
+            <label for="">changeamt</label>
+            <br>
+            <input type="text" name="" id="changeamt">
+            <br> -->
+
+            <br>
+            <label for="">inputvalue</label>
+            <br>
+            <input type="text" name="" id="inputvalue" value="9974">
+            <br>
+
+            <br> <input type="checkbox" checked id="testnetbox"><label for="">testnet</label>
+
+            <br><br><button onclick="create()">Create</button>
+      </div>
+      <br>
+      <div class="box">
+            <div class="step">
+
+                  <p id="wait" style="display: none;"> Wating for result...</p>
+                  <div id="resTR"></div>
+
+                  <br>
+                  <br>
+                  <button onclick="pr()">res</button> &nbsp;&nbsp;|&nbsp;&nbsp;<button onclick="pr()">res2</button>
+                  <br>
+                  <br>
+            </div>
+
+      </div>
+      <script>
+            var res
+            var res2
+
+            function pr() {
+                  console.log(res);
+            }
+            function pr2() {
+                  console.log(res2);
+            }
+
+            function create() {
+                  var typei = document.getElementById('typei').value;
+                  var txidi = document.getElementById('txidi').value;
+                  var outni = document.getElementById('outni').value;
+                  var outputi = document.getElementById('outputi').value;
+                  var amounti = document.getElementById('amounti').value;
+                  var wifi = document.getElementById('wifi').value;
+                  // var changeout = document.getElementById('changeout').value;
+                  // var changeamt = document.getElementById('changeamt').value;
+                  var inputvalue = document.getElementById('inputvalue').value;
+                  var typei = document.getElementById('typei').value;
+                  if (document.getElementById('testnetbox').checked == true) {
+                        res = buidl.createTransaction(typei, txidi, Number(outni), outputi.toString(), Number(amounti), wifi, null, null, null, 'testnet')
+                  } else {
+                        res = buidl.createTransaction(typei, txidi, Number(outni), outputi.toString(), Number(amounti), wifi, null, null, null)
+                  }
+
+
+                  setTimeout(() => {
+                        document.getElementById('resTR').innerHTML = res.signedtx
+                        console.log(res);
+
+                        var pushtx = {
+                              tx: res.signedtx
+                        };
+                        $.post('https://api.blockcypher.com/v1/btc/main/txs/push', JSON.stringify(pushtx))
+                              .then(function (d) { console.log(d) });
+
+                  }, 2000);
+                  //c0ce8b15ef7486970df7e963f94222f6fd2a53d1dc83688bb4b01949b1d31b96
+
+                  /*
+                                    var rch = res;
+                  
+                                    document.getElementById('wait').style.display = 'block';
+                                    var tick = 0;
+                                    var iin = setInterval(() => {
+                                          if (res.signedtx.toString().substr(0, 7) == 'invalid') {
+                                                document.getElementById('wait').style.display = 'none';
+                                                document.getElementById('resTR').innerHTML = res.signedtx
+                                                clearInterval(iin)
+                                          }
+                                          if (res != rch) {
+                                                document.getElementById('wait').style.display = 'none';
+                                                document.getElementById('resTR').innerHTML = res
+                                                clearInterval(iin)
+                  
+                                          }
+                                          //wait
+                  
+                                          document.getElementById('wait').append('.')
+                                          tick++;
+                                          if (tick == 30) {
+                                                document.getElementById('wait').innerHTML = ' Wating for result...'
+                                                tick = 0;
+                                          }
+                                    }, 1000);
+                  
+                  
+                  */
+
+                  // var x = [typei, txidi, outni, outputi, amounti, wifi, changeout, changeamt, inputvalue, networkInput]                  // console.log(x)
+            }
+      </script>
+
+</body>
+
+
+
+
+<style>
+      .box {
+            border: 1px black solid;
+            padding: 10px;
+      }
+
+      .step {
+            background-color: #cccccc;
+            padding: 10px;
+      }
+</style>

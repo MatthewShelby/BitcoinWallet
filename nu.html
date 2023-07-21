@@ -1,0 +1,87 @@
+<head>
+      <title> new non-custodial user</title>
+      <script src="buidl.js"></script>
+
+</head>
+
+<body>
+      <h1>Non-Custodial User</h1>
+      <br>
+      <div class="box">
+            <h4>Here you can create a new wallet.</h4>
+            <p>Don't forget to save keys.</p>
+            <br>
+            <button onclick="cr()">Create</button>
+            <br>
+            <br>
+            <div class="step" id="resData" style="display: none;">
+                  <h4>Public:</h4>
+                  <label for="">p2pkh:</label>
+                  <br>
+                  <label for="" class="info" id="p2pkh"></label>
+                  <br>
+
+                  <label for="">p2shp2wpkh:</label>
+                  <br>
+                  <label for="" class="info" id="p2shp2wpkh"></label>
+                  <br>
+
+                  <label for="">p2wpkh:</label>
+                  <br>
+                  <label for="" class="info" id="p2wpkh"></label>
+                  <br>
+
+                  <h4>Private:</h4>
+                  <label for="">pk:</label>
+                  <br>
+                  <label for="" class="info" id="pk"></label>
+                  <br>
+
+                  <label for="">redeemScript:</label>
+                  <br>
+                  <label for="" class="info" id="redeemScript"></label>
+                  <br>
+
+            </div>
+      </div>
+      <script>
+            //
+            function cr() {
+                  var adr = buidl.getNewAddress();
+                  console.info(adr)
+                  document.getElementById('resData').style.display = 'block';
+                  document.getElementById('p2pkh').innerHTML = adr.p2pkh
+                  document.getElementById('p2shp2wpkh').innerHTML = adr.p2shp2wpkh
+                  document.getElementById('p2wpkh').innerHTML = adr.p2wpkh
+                  document.getElementById('pk').innerHTML = adr.pk
+                  document.getElementById('redeemScript').innerHTML = adr.redeemScript
+
+            }
+
+            //5cestuiwvbwonntz
+      </script>
+</body>
+
+
+
+<style>
+      .box {
+            border: 1px black solid;
+            padding: 10px;
+      }
+
+      .step {
+            background-color: #cccccc;
+            padding: 10px;
+      }
+
+      .info {
+            background-color: #f7e1e1;
+            padding: 15px 2px;
+      }
+
+      label {
+            display: flex;
+            position: relative;
+      }
+</style>
