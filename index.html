@@ -1,25 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
       <title>Bitcoin Wallet - home</title>
       <link rel="stylesheet" href="assets/css/fonts.css">
-
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+            rel="stylesheet">
 </head>
 
 <body>
-      <h1>Bitcoin Wallet</h1>
-      <h3>This project is a MVP of a Custodial BTC Wallet.</h3>
-      <p>This is a MVP inpmlimented on Bitcoin Mainnet showcasing essential functionalities required for a Bitcoin
-            Wallet,
-            where basic chain-related functionalities for developing a crypto exchange are demonstrated.</p>
-      <p></p>
+      <style>
+
+      </style>
+      <div class="page-layout">
+            <div class="logo">
+                  <div class="logo-img">
+                        <img src="./assets/images/logo/BTC.png" alt="">
+                  </div>
+                  <h1><i> Bitcoin Wallet</i></h1>
+            </div>
+
+            <h3 class="center-text">Welcome to my MVP Custodial <br> Bitcoin Wallet project.</h3>
+
+            <div class="explain">
+
+                  <p>This implementation on the Bitcoin Mainnet highlights essential functionalities crucial for a
+                        Bitcoin
+                        Wallet.
+                        As a MVP,
+                        it demonstrates fundamental chain-related features required for developing a crypto exchange.
+                  </p>
+                  <br>
+                  <br>
+                  <br>
+                  <p class="warn">Attention:</p>
+                  <p>
+                        <b>You are welcome to test the wallet; however, please use only a
+                              <span class="inline-warn"> very small amount of Bitcoin
+                                    for
+                                    testing</span>
+                              purposes as it
+                              is still under development and subject to improvements.</b>
+                  </p>
+            </div>
+
+            <div class="get-started-sertion">
+                  <h2>Explore the project: </h2>
+                  <br>
+
+                  <a href="start.html" class="start-btn">Get Started</a>
+            </div>
+
+            <!-- 
+            <p>I would greatly appreciate your feedback and
+                  opinion on the
+                  project!</p>
 
 
-      <br>
-      <br>
-      <br>
+            <br>
+            <br>
+            <br>
 
-      <button onclick="openAmin()">Open Admin</button> &nbsp;&nbsp; &nbsp;&nbsp;
-      <button onclick="openUser()">Open User</button> &nbsp;&nbsp; &nbsp;&nbsp;
+            <button onclick="openAmin()">Open Admin</button> &nbsp;&nbsp; &nbsp;&nbsp;
+            <button onclick="openUser()">Open User</button> &nbsp;&nbsp; &nbsp;&nbsp; -->
+            <div class="disc">
+                  <h2>Introducing my MVP Custodial BTC Wallet</h2>
+                  <p> The project designed to showcase fundamental
+                        functionalities required
+                        for a Bitcoin Wallet. With a focus on implementing essential chain-related features, this
+                        project aims to lay the
+                        groundwork for developing a robust and secure crypto exchange. Embracing innovation and
+                        user-centric design, the MVP
+                        offers a glimpse into the future of decentralized financial solutions.
+                  </p>
+                  <br><br>
+                  <h2>Elevating User Experience with HD Wallet Structure</h2>
 
+                  <p>
+                        At its core, the most significant technology employed in the implementation of this project is
+                        the HD (Hierarchical
+                        Deterministic) wallet structure. HD wallets offer enhanced security and flexibility by
+                        generating a tree-like structure
+                        of cryptographic key pairs derived from a single master seed. With this approach, users can
+                        effortlessly manage numerous
+                        addresses and transactions while maintaining a high level of privacy and security. The
+                        utilization of HD wallet
+                        structure exemplifies the commitment to pioneering cutting-edge solutions within the realm of
+                        cryptocurrency storage and
+                        management.</p>
+            </div>
+            <div class="footer">
+                  <span>Designed and Developed by
+                        <a href="mailto:matthewshelb@gmail.com">MatthewShelB@gmail.com</a>
+                  </span>
+                  <span>
+                        <img src="assets/images/statusok.svg" id="status-signal" alt="" title="checking">
+                        Network Status
+                  </span>
+            </div>
+      </div>
+
+      <script src="assets/js/const.js"></script>
       <script>
             function openAmin() {
                   var ps = window.prompt("Please enter Admin password")
@@ -32,6 +116,9 @@
             function openUser() {
                   window.location.href = '/nru.html'
             }
+            $(document).ready(() => {
+                  checkNetwork()
+            })
       </script>
 
       <style>
@@ -40,24 +127,6 @@
                   font-size: x-large;
             }
 
-            button {
-                  background-color: black;
-                  color: aliceblue;
-                  padding: 10px;
-                  border: 1px white solid;
-                  border-radius: 6px;
-                  cursor: pointer;
-                  font-size: 1.25rem;
-            }
-
-            button:hover {
-                  background-color: rgb(58, 58, 58);
-                  /* color: rgb(210, 213, 216); */
-                  padding: 10px;
-                  border: 1px rgb(223, 223, 223) solid;
-                  cursor: pointer;
-                  font-size: 1.25rem;
-            }
 
             h1 {
                   font-family: 'proxima';
@@ -82,3 +151,5 @@
       <p style="font-weight: 900;">Faxlix Exchange</p> -->
 
 </body>
+
+</html>

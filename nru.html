@@ -199,7 +199,7 @@
                   if (name == '' || pass == '') {
                         window.alert(' Please enter a valid input')
                   } else {
-                        var count = Number($.cookie('userCount'))
+                        var count = Number($.cookie('userCount')) || 1
                         var id = count + 1;
                         var userWA = buidl.fromXpub('zpub6rG9GphBhZWCWUfqwKpRJgMqhwjXhZrXFev4hYYifXYGZoUmiUujYMZbysGB6umAssDgWo9riWUNen6B5nTbAhHCMgK2DxQ15p4vfU8MEGK', 0, id).addr;
                         var User = {

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <title>Bitcoin Wallet - home</title>
+      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+            rel="stylesheet">
+</head>
+
+<body>
+      <style>
+            .logo h1 i {
+                  color: #fff;
+            }
+
+            .arr-img {
+                  max-width: 16px;
+            }
+
+            .flex {
+                  display: flex;
+            }
+      </style>
+      <div class="page-layout-2">
+            <div class="logo">
+                  <div class="logo-img">
+                        <img src="./assets/images/logo/BTC.png" alt="">
+                  </div>
+                  <h1><i> Bitcoin Wallet</i></h1>
+            </div>
+            <div class="board ">
+                  <div class="board-title">
+                        Account info:
+                  </div>
+                  <div class="board-body flex">
+                        <div class="sub-board">
+                              <label class="sb-title">Your Wallet Address:</label><br>
+                              <span class="sb-data" id="walletAddress">----</span>
+                        </div>
+
+                        <div class="sub-board">
+                              <label class="sb-title">Balance:</label><br>
+                              <span class="sb-data"><span id="balance"> - </span> BTC</span>
+                        </div>
+                        <div class="sub-board center">
+                              <label class="sb-title" id="un-dash">---</label><br>
+                              <span class="sb-data  ft-icon pointer" title="Logout" onclick="logout()">
+
+                                    <img src="./assets/images/icon/logout.svg" alt="Logout" title="Logout">
+                              </span>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="board">
+
+                  <div class="board-title">
+                        Transfer:
+                  </div>
+                  <div class="board-body">
+                        <div class="sub-board-row">
+                              <div class="sub-board-child">
+                                    <label class="sb-title">Destination Address:</label>
+                                    <input type="text" class="amount-input " style="width: 32rem;"
+                                          placeholder="mv4rn....." id="destAddress">
+
+                              </div>
+
+                              <div class="sub-board-child">
+
+                                    <label class="sb-title">Gas fee:</label>
+                                    <select name="gasfee" class="gasfee-input" id="gasSelect">
+                                          <option value="med">Normal</option>
+                                          <option value="low">Low / Slow</option>
+                                          <option value="high">High / Fast</option>
+                                    </select>
+
+                              </div>
+                              <div class="sub-board-child   ">
+                                    <span class="amount-max-line">
+                                          <label class="sb-title   ">Amount: </label><span
+                                                id="max-btn">MAX</span></span>
+                                    <input type="number" class="amount-input  " value="0.0" id="txAmount"
+                                          style="width: 10rem;">
+                              </div>
+
+                              <div class="form-action">
+                                    <button class="action-btn send-btn" id="TransferSend">Send</button>
+                              </div>
+                              <!-- <span class="sb-data"></span> -->
+                              <br>
+                              <div class="form-loading">
+                                    <span>
+                                          <img src="./assets/images/Empty.png" alt="" style="height: 50px; width: 1px;">
+                                    </span>
+                                    <span>
+                                          <img src="./assets/images/loading.svg" alt=""
+                                                style="height: 50px; display: none;" id="send-loading">
+                                    </span>
+                              </div>
+                        </div>
+                  </div>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+                  <style>
+                        .amount-input {
+                              margin-top: 6px;
+                              font-size: 150%;
+                        }
+
+                        .gasfee-input {
+                              font-size: 100%;
+                              margin-top: 6px;
+                              height: 34px;
+                        }
+
+                        /* Chrome, Safari, Edge, Opera */
+                        .amount-input::-webkit-outer-spin-button,
+                        .amount-input::-webkit-inner-spin-button {
+                              -webkit-appearance: none;
+                              margin: 0;
+                        }
+
+                        /* Firefox */
+                        .amount-input[type=number] {
+                              -moz-appearance: textfield;
+                        }
+                  </style>
+
+
+            </div>
+
+            <div class="board">
+                  <div class="board-title">
+                        Recent Transactions:
+                  </div>
+                  <div class="board-body" id="recent-body">
+
+                  </div>
+            </div>
+
+            <div class="footer">
+                  <span>Designed and Developed by
+                        <a href="mailto:matthewshelb@gmail.com">MatthewShelB@gmail.com</a>
+                  </span>
+                  <span>
+                        <img src="assets/images/statusok.svg" id="status-signal" alt="" title="checking">
+                        Network Status
+                  </span>
+            </div>
+      </div>
+      <script src="https://rawgit.com/dawsonbotsford/satoshi-bitcoin/master/index.bundle.js"></script>
+
+      <script src="assets/js/const.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.0.js"
+            integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+            integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+            var myWalletAddress, myUsername, myToken, myBalance, fees
+
+            $(document).ready(() => {
+
+
+                  myWalletAddress = $.cookie('__user-wa')
+                  myUsername = $.cookie('__user-un')
+                  myToken = $.cookie('__auth-tk')
+                  console.log(myWalletAddress)
+                  if (myWalletAddress == undefined ||
+                        myUsername == undefined ||
+                        myToken == undefined) {
+                        window.location.href = '/start'
+                  }
+
+                  console.log($.cookie('__auth-tk') + ' - ' + $.cookie('__user-wa'))
+
+                  $('#TransferSend').click(Transfer)
+                  checkNetwork()
+                  setTimeout(() => {
+                        setBalance(myWalletAddress)
+                        setTransactions(myWalletAddress)
+                        document.getElementById('walletAddress').innerHTML = myWalletAddress
+                        document.getElementById('un-dash').innerHTML = myUsername
+                  }, 200);
+
+            })
+
+            var firstAddressLengthError = false
+            function Transfer() {
+                  document.getElementById('send-loading').style.display = 'block'
+
+                  //34
+                  var adr = $('#destAddress')[0].value
+                  var am = Number($('#txAmount')[0].value)
+                  var per = $('#gasSelect').find(":selected").val()
+                  if (adr.length < 34) {
+                        if (!firstAddressLengthError) {
+                              window.alert('Destination address seems too short. Please recheck it.')
+                              firstAddressLengthError = true
+                              document.getElementById('send-loading').style.display = 'none'
+                              return;
+                        }
+                  }
+                  if (am <= 0) {
+                        window.alert('Amount must be greater then zero.')
+                        document.getElementById('send-loading').style.display = 'none'
+                        return;
+                  }
+                  var data = {
+                        amount: am,
+                        destination: adr,
+                        periority: per,
+                        token: myToken,
+                        username: myUsername,
+                        gassAmount: getChoosenFee()
+                  }
+                  console.info(data)
+
+                  $.ajax({
+                        url: baseURL + 'transfer',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        success: ((res) => {
+                              console.log('transfer success res:')
+                              console.info(res)
+                              var tx = { tx: res.data.tx }
+                              console.info(tx)
+                              $.post('https://api.blockcypher.com/v1/btc/test3/txs/push', JSON.stringify(tx))
+                                    .then(function (d) {
+                                          console.log(d)
+                                          addRow(d.tx.hash)
+                                          document.getElementById('send-loading').style.display = 'none'
+
+                                    });
+                        }),
+                        error: ((err) => {
+                              console.error('error: ')
+                              console.info(err)
+                              window.alert(err.errorText || unknown)
+                              document.getElementById('send-loading').style.display = 'none'
+
+                        })
+                  })
+
+            }
+
+            function addRow(input) {
+                  //recent-body
+                  var temp = document.getElementById('recent-body').innerHTML;
+                  var newTX = `
+                  <div class="sub-board">
+                              <label class="sb-title">Recently Added Transaction id:</label><br>
+                              <span class="sb-data">${input}</span>
+                        </div>
+                        <br>
+                  `
+                  document.getElementById('recent-body').innerHTML = newTX + temp
+
+            }
+
+            function setBalance(myAddress) {
+                  $.get('https://api.blockcypher.com/v1/btc/test3/addrs/' + myAddress + '/balance')
+                        .then(function (res) {
+                              console.log(res)
+                              //balance
+                              myBalance = res.balance
+                              document.getElementById("balance").innerHTML = sb.toBitcoin(res.balance)
+                              setMax()
+                        });
+            }
+
+            function readTerms(inp) {
+                  console.log('inp id: ' + inp)
+                  $('html, body').animate({
+                        scrollTop: $("#terms").offset().top
+                  }, 2000);
+
+                  setTimeout(() => {
+                        document.getElementById(inp).disabled = false;
+                  }, 2000);
+            }
+
+            function setTransactions(senderAddress) {
+                  let url = APIURL + 'addrs/' + senderAddress + '/full?limit=50&unspentOnly=true&includeScript=true'
+                  $.get(url, (res) => {
+                        console.log('setTransactions')
+                        console.log(res)
+                        var txs = res.txs
+                        var allTRXs = ''
+                        for (let i = 0; i < txs.length; i++) {
+                              txs[i];
+                              var senderAddress, receiverAddress
+                              var amount = 0;
+                              var direction = ''
+                              if (txs[i].inputs[0].addresses[0] == myWalletAddress) {
+                                    direction = 'SENT'
+                                    senderAddress = myWalletAddress
+                                    for (let j = 0; j < txs[i].outputs.length; j++) {
+                                          const element = txs[i].outputs[j];
+                                          if (element.addresses[0] != myWalletAddress) {
+                                                amount += sb.toBitcoin(element.value)
+                                                receiverAddress = element.addresses[0]
+                                          }
+                                    }
+                              } else {
+                                    direction = 'RECEIVED'
+                                    receiverAddress = myWalletAddress
+
+                                    for (let j = 0; j < txs[i].outputs.length; j++) {
+                                          const element = txs[i].outputs[j];
+                                          if (element.addresses[0] == myWalletAddress) {
+                                                amount += sb.toBitcoin(element.value)
+                                                senderAddress = txs[i].inputs[0].addresses[0]
+                                          }
+                                    }
+                              }
+                              var recent = `
+                              <div class="sub-board">
+                                    <span class="recent-title-frame">
+                                          <span>
+                                          <label class="sb-title-recent">${amount} BTC ${direction}</label>
+                                          <label class="sb-time-recent">${txs[i].confirmed || 'Waiting for confirmation'}</label>
+                                          </span> 
+                                          <span class="recent-path">
+                                                <span class="recent-adr">${senderAddress}</span> 
+                                                <span class="arrow-right">
+                                                      <img src="./assets/images/icon/arrow-right.svg" alt="" class="arr-img">
+                                                </span> 
+                                                <span class="recent-adr">${receiverAddress}</span>
+                                          </span>
+                                    </span><br>
+                                    <span class="sb-data-recent">${txs[i].hash}</span>
+                              </div>
+                              <br>
+                              `
+                              allTRXs += recent
+                        }
+
+                        document.getElementById('recent-body').innerHTML = allTRXs
+                  })
+            }
+
+            function setMax() {
+                  $.ajax({
+                        url: baseURL + 'fees',
+                        type: 'GET',
+                        success: ((res) => {
+                              console.log('fees success res:')
+                              console.info(res)
+                              fees = res.data
+                              document.getElementById('max-btn').style.display = 'block'
+                              document.getElementById('max-btn').addEventListener('click', writeMax)
+
+                        }),
+                        error: ((err) => {
+                              console.error('error: ')
+                              console.info(err)
+
+                        })
+                  })
+            }
+
+            function writeMax() {
+                  var per = $('#gasSelect').find(":selected").val()
+                  var iFee = 0
+                  switch (per) {
+                        case 'high':
+                              iFee = fees.high
+                              break;
+                        case 'med':
+                              iFee = fees.med
+                              break;
+                        case 'low':
+                              iFee = fees.low
+                              break;
+
+                        default:
+                              break;
+                  }
+                  console.log('Gas fee rate for ' + per + ' is: ' + iFee)
+                  console.log('Number(myBalance) is: ' + sb.toBitcoin(Number(myBalance)))
+                  console.log('sb.toBitcoin(Number(iFee)) is: ' + sb.toBitcoin(Number(iFee)))
+
+                  var max = sb.toBitcoin(Number(myBalance)) - sb.toBitcoin(Number(iFee))
+                  console.log('MAX is: ' + max)
+
+                  $('#txAmount')[0].value = max
+            }
+
+            function getChoosenFee() {
+                  var per = $('#gasSelect').find(":selected").val()
+                  var iFee = 0
+                  switch (per) {
+                        case 'high':
+                              iFee = fees.high
+                              break;
+                        case 'med':
+                              iFee = fees.med
+                              break;
+                        case 'low':
+                              iFee = fees.low
+                              break;
+
+                        default:
+                              break;
+                  }
+
+                  console.log('Choosen fee is: ' + per + ' and its amount is: ' + iFee)
+                  return iFee
+            }
+
+            function logout() {
+                  $.cookie('__auth-tk', '')
+                  $.cookie('__user-wa', '')
+                  window.location.href = '/start'
+            }
+            //mwJZw1qiRdrr22qFUEvbgXDXGfSQz1WkdG
+      </script>
+</body>
+
+</html>

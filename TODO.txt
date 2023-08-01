@@ -1,0 +1,7 @@
+Perform onpage validation for Forms in start.html
+Fix Base and API URLs 
+Add ReCaptcha
+Uncomment Read Terms Animation in #5 readTerms
+Add MAX botton
+Add somthing to show wether the request for transfer has been fullfiled or not.
+Disable Send button when transfer is in operation

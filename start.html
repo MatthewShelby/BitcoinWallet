@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <title>Bitcoin Wallet - home</title>
+      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+            rel="stylesheet">
+</head>
+
+<body>
+      <style>
+            /* OVERRIDE */
+            .logo h1 i {
+                  color: #fff;
+            }
+      </style>
+      <div class="page-layout-2">
+            <div class="logo">
+                  <div class="logo-img">
+                        <img src="./assets/images/logo/BTC.png" alt="">
+                  </div>
+                  <h1><i> Bitcoin Wallet</i></h1>
+            </div>
+            <div class="forms">
+                  <div class="form">
+                        <div class="form-title-frame">
+                              <div class="ft-icon"><img src="assets/images/icon/register1.svg" alt=""></div>
+                              <div class="ft-text">Register</div>
+
+                        </div>
+                        <div class="form-body-frame">
+                              <div class="fb-un">
+                                    <label for="username">Username:</label>
+                                    <input type="text" for="username" autocomplete="username" id="reg-un">
+                              </div>
+                              <div class="fb-pw">
+
+                                    <label for="password">Password:</label>
+                                    <input type="password" autocomplete="new-password" id="reg-pass">
+                                    <label for="repeat-password">Repeat Password:</label>
+                                    <input type="password" autocomplete="new-password" id="reg-pass-rep">
+                                    <br><br>
+                                    <label for="password">
+                                          <input type="checkbox" autocomplete="read-terms" id="reg-check">
+                                          I have read and understood the <u class="inline-warn pointer"
+                                                onclick="readTerms('register-btn')"> Important
+                                                Information</u>.
+                                    </label>
+                              </div>
+                              <div class="form-action">
+                                    <button class="action-btn" id="register-btn" disabled="true"
+                                          onclick="reg()">Register</button>
+                                    <!-- <input type="submit" class="action-btn" value="Register"> -->
+                              </div>
+                        </div>
+                        <div class="form-loading">
+                              <span>
+                                    <img src="./assets/images/Empty.png" alt="" style="height: 50px; width: 1px;">
+                              </span>
+                              <span>
+                                    <img src="./assets/images/loading.svg" alt="" style="height: 50px; display: none;"
+                                          id="reg-loading">
+                              </span>
+                        </div>
+
+                  </div>
+                  <div class="form">
+                        <div class="form-title-frame">
+                              <div class="ft-icon"><img src="assets/images/icon/login1.svg" alt="Login"
+                                          style="margin-right: 24px;"></div>
+                              <div class="ft-text">Login</div>
+                        </div>
+                        <div class="form-body-frame">
+                              <div class="fb-un">
+                                    <label for="username">Username:</label>
+                                    <input type="text" autocomplete="username" id="login-un">
+                              </div>
+                              <div class="fb-pw">
+
+                                    <label for="password">Password:</label>
+                                    <input type="password" autocomplete="password" id="login-pw">
+                                    <label for="password">
+                                          <input type="checkbox" autocomplete="remember-me" id="login-remember">Remember
+                                          me</label>
+                                    <br><br>
+                                    <label for="password">
+                                          <input type="checkbox" autocomplete="read-terms" id="login-check">
+                                          I have read and understood the <u class="inline-warn pointer"
+                                                onclick="readTerms('signin-btn')"> Important
+                                                Information</u>.
+                                    </label>
+
+                              </div>
+                              <div class="form-action">
+                                    <button class="action-btn" id="login-btn" disabled="true"
+                                          onclick="login()">Login</button>
+                              </div>
+                              <div class="form-loading">
+                                    <span>
+                                          <img src="./assets/images/Empty.png" alt="" style="height: 50px; width: 1px;">
+                                    </span>
+                                    <span>
+                                          <img src="./assets/images/loading.svg" alt=""
+                                                style="height: 50px; display: none;" id="login-loading">
+                                    </span>
+                              </div>
+                        </div>
+
+                  </div>
+
+
+
+
+            </div>
+
+            <div class="disc2" id="terms">
+
+                  <p class="warn">Important Information for Users:</p>
+                  <p>
+                        <b>No Account Recovery:</b> Our platform does not collect any personal credentials, such as
+                        email
+                        addresses or phone numbers.
+                        As a result, we have no means of recovering lost or forgotten account information. Please take
+                        extra
+                        care to safeguard
+                        your login details as <span class="inline-warn">account recovery is not possible</span>.
+                  </p>
+                  <br>
+                  <p>
+                        <b>Transfer Policy:</b> When you transfer funds into your account, please be aware that <span
+                              class="inline-warn">you can only transfer them out to
+                              another Bitcoin address</span>. There is no option for refunds or account withdrawal.
+                        Transfers
+                        within the platform are solely allowed
+                        to bitcoin addressess.
+                  </p>
+                  <br>
+                  <p>
+                        Thank you for your understanding and cooperation. Should you have any questions or concerns,
+                        please
+                        don't hesitate to
+                        reach out to me.
+                  </p>
+            </div>
+
+
+
+            <div class="footer">
+                  <span>Designed and Developed by
+                        <a href="mailto:matthewshelb@gmail.com">MatthewShelB@gmail.com</a>
+                  </span>
+                  <span>
+                        <img src="assets/images/statusok.svg" id="status-signal" alt="" title="checking">
+                        Network Status
+                  </span>
+            </div>
+      </div>
+      <script src="assets/js/const.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.0.js"
+            integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+            integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+            $(document).ready(() => {
+                  $("#readTerms").click(function () {
+                        $('html, body').animate({
+                              scrollTop: $("#terms").offset().top
+                        }, 2000);
+                  });
+                  checkNetwork()
+                  document.getElementById('reg-check').addEventListener('click', regBtnCheck)
+                  document.getElementById('login-check').addEventListener('click', loginBtnCheck)
+            })
+
+            function reg() {
+                  console.log('reg post start')
+                  document.getElementById('reg-loading').style.display = 'block'
+
+                  // Input validations
+                  let un = $('#reg-un')[0].value
+                  let p1 = $('#reg-pass')[0].value
+                  let p2 = $('#reg-pass-rep')[0].value
+                  if (un.length < 6) {
+                        window.alert('Username must be at least 6 characters.')
+                        document.getElementById('reg-loading').style.display = 'none'
+                        return;
+                  }
+                  if (p1.length < 6) {
+                        window.alert('Password must be at least 6 characters.')
+                        document.getElementById('reg-loading').style.display = 'none'
+
+                        return;
+                  }
+                  if (p1 != p2) {
+                        window.alert('Password and Repeat password are not matched.')
+                        document.getElementById('reg-loading').style.display = 'none'
+
+                        return;
+                  }
+
+
+                  var Data = {
+                        username: $('#reg-un')[0].value,
+                        password: $('#reg-pass')[0].value,
+                  }
+                  console.info(Data)
+                  $.ajax({
+                        url: baseURL + 'register',
+                        type: 'POST',
+                        data: JSON.stringify(Data), //headers: { "Content-Type": "application/json" },
+                        dataType: "json",
+                        success: (res) => {
+                              console.log('register for ' + Data.username + ' sent. - success')
+                              console.info(res)
+                              var date = new Date();
+                              date.setTime(date.getTime() + (10 * 60 * 1000));
+                              console.log('setting cookies')
+                              $.cookie('__auth-tk', res.data.keepToken, { expires: date })
+                              $.cookie('__user-wa', res.data.address, { expires: date })
+                              $.cookie('__user-un', res.data.username, { expires: date })
+                              document.getElementById('reg-loading').style.display = 'none'
+                              window.location.href = 'dashboard'
+                        },
+                        error: (res) => {
+                              console.error('Record for ' + Data.username + ' Failed.')
+                              console.info(res)
+                              window.alert(res.responseText || unknown)
+                              document.getElementById('reg-loading').style.display = 'none'
+
+                        }
+                  })
+            }
+
+            function login() {
+                  console.log('login post start')
+                  document.getElementById('login-loading').style.display = 'block'
+                  //qqqq
+                  // Input validations
+                  let un = $('#login-un')[0].value
+                  let pw = $('#login-pw')[0].value
+                  let rm = $('#login-remember')[0].checked
+                  let rt = $('#login-check')[0].checked
+
+
+                  if (un.length < 6) {
+                        window.alert('Username must be at least 6 characters.')
+                        document.getElementById('login-loading').style.display = 'none'
+                        return;
+                  }
+                  if (pw.length < 6) {
+                        window.alert('Password must be at least 6 characters.')
+                        document.getElementById('login-loading').style.display = 'none'
+
+                        return;
+                  }
+
+
+
+                  var Data = {
+                        username: un,
+                        password: pw,
+                        remember: rm,
+                  }
+                  console.info(Data)
+                  $.ajax({
+                        url: baseURL + 'login',
+                        type: 'POST',
+                        data: JSON.stringify(Data), //headers: { "Content-Type": "application/json" },
+                        dataType: "json",
+                        success: (res) => {
+                              console.log('login for ' + Data.username + ' sent. - success')
+                              console.info(res)
+                              console.info(res.data.keepSigned)
+                              var date = new Date(res.data.keepSigned);
+
+                              console.log('setting cookies')
+                              $.cookie('__auth-tk', res.data.AuthToken, { expires: date })
+                              $.cookie('__user-wa', res.data.address, { expires: date })
+                              $.cookie('__user-un', res.data.username, { expires: date })
+                              document.getElementById('login-loading').style.display = 'none'
+                              window.location.href = 'dashboard'
+                        },
+                        error: (res) => {
+                              console.error('Record for ' + JSON.stringify(Data).username + ' Failed.')
+                              console.info(res)
+                              window.alert(res.responseText || unknown)
+                              document.getElementById('login-loading').style.display = 'none'
+
+                        }
+                  })
+            }
+
+            function readTerms(inp) {
+                  console.log('inp id: ' + inp)
+                  //#5 readTerms
+
+                  $('html, body').animate({
+                        scrollTop: $("#terms").offset().top
+                  }, 2000);
+            }
+
+            function regBtnCheck() {
+                  if (document.getElementById('reg-check').checked) {
+                        document.getElementById('register-btn').disabled = false;
+                  } else {
+                        document.getElementById('register-btn').disabled = true;
+                  }
+            }
+
+            function loginBtnCheck() {
+                  if (document.getElementById('login-check').checked) {
+                        document.getElementById('login-btn').disabled = false;
+                  } else {
+                        document.getElementById('login-btn').disabled = true;
+                  }
+            }
+
+
+      </script>
+</body>
+
+</html>
