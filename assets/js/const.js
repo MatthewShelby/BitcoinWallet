@@ -1,6 +1,6 @@
 const baseURL = 'https://bitcoin-wallet-server.onrender.com/'
 
-const APIURL = 'https://api.blockcypher.com/v1/btc/test3/'
+const APIURL = 'https://api.blockcypher.com/v1/btc/main/'
 const pushTX = APIURL + 'txs/push'
 const balanceURL = APIURL + 'addrs/'
 
