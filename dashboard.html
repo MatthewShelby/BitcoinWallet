@@ -275,7 +275,7 @@
             }
 
             function setBalance(myAddress) {
-                  $.get('https://api.blockcypher.com/v1/btc/test3/addrs/' + myAddress + '/balance')
+                  $.get(balanceURL + myAddress + '/balance')
                         .then(function (res) {
                               console.log(res)
                               //balance
@@ -437,6 +437,7 @@
             function logout() {
                   $.cookie('__auth-tk', '')
                   $.cookie('__user-wa', '')
+                  $.cookie('__user-un', '')
                   window.location.href = '/start'
             }
             //mwJZw1qiRdrr22qFUEvbgXDXGfSQz1WkdG

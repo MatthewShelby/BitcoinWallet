@@ -1,9 +1,12 @@
 const baseURL = 'https://bitcoin-wallet-server.onrender.com/'
-const APIURL = 'https://api.blockcypher.com/v1/btc/test3/'
-const unknown = 'An unknown error happend. please try later.'
-const explorTXURL = 'https://live.blockcypher.com/btc-testnet/tx/'
-const pushTX = 'https://api.blockcypher.com/v1/btc/test3/txs/push'
 
+const APIURL = 'https://api.blockcypher.com/v1/btc/test3/'
+const pushTX = APIURL + 'txs/push'
+const balanceURL = APIURL + 'addrs/'
+
+const explorTXURL = 'https://live.blockcypher.com/btc-testnet/tx/'
+
+const unknown = 'An unknown error happend. please try later.'
 
 var isConnected = false;
 var attempts = 0
@@ -34,20 +37,13 @@ async function checkNetwork() {
       }
 }
 
-async function ipLookUp() {
-      $.get('https://ip8.com/ip').done(ip => { console.log(ip) }).fail(err => { console.error(err) })
 
-}
 
 async function chechAccess() {
       await $.ajax({
-            // url: 'https://ip8.com/ip',
             url: 'https://freeipapi.com/api/json',
             type: 'get',
             success: ((res) => {
-                  console.log('ip: ')
-                  console.info(res)
-                  console.info(res.countryName)
                   if (res.countryName == 'Iran (Islamic Republic of)') {
                         window.location.href = './accessdenied'
                   }
