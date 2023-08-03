@@ -1,7 +1,8 @@
 const baseURL = 'https://bitcoin-wallet-server.onrender.com/'
 const APIURL = 'https://api.blockcypher.com/v1/btc/test3/'
 const unknown = 'An unknown error happend. please try later.'
-
+const explorTXURL = 'https://live.blockcypher.com/btc-testnet/tx/'
+const pushTX = 'https://api.blockcypher.com/v1/btc/test3/txs/push'
 
 
 var isConnected = false;
