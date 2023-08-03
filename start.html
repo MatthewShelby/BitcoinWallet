@@ -166,7 +166,8 @@
             integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script>
-            $(document).ready(() => {
+            $(document).ready(async () => {
+                  await chechAccess()
                   $("#readTerms").click(function () {
                         $('html, body').animate({
                               scrollTop: $("#terms").offset().top
@@ -177,7 +178,10 @@
                   document.getElementById('login-check').addEventListener('click', loginBtnCheck)
             })
 
-            function reg() {
+
+
+
+            async function reg() {
                   console.log('reg post start')
                   document.getElementById('reg-loading').style.display = 'block'
 
@@ -209,20 +213,20 @@
                         password: $('#reg-pass')[0].value,
                   }
                   console.info(Data)
-                  $.ajax({
+                  await $.ajax({
                         url: baseURL + 'register',
                         type: 'POST',
                         data: JSON.stringify(Data), //headers: { "Content-Type": "application/json" },
                         dataType: "json",
-                        success: (res) => {
+                        success: async (res) => {
                               console.log('register for ' + Data.username + ' sent. - success')
                               console.info(res)
                               var date = new Date();
                               date.setTime(date.getTime() + (10 * 60 * 1000));
                               console.log('setting cookies')
-                              $.cookie('__auth-tk', res.data.keepToken, { expires: date })
-                              $.cookie('__user-wa', res.data.address, { expires: date })
-                              $.cookie('__user-un', res.data.username, { expires: date })
+                              await $.cookie('__auth-tk', res.data.keepToken, { expires: date })
+                              await $.cookie('__user-wa', res.data.address, { expires: date })
+                              await $.cookie('__user-un', res.data.username, { expires: date })
                               document.getElementById('reg-loading').style.display = 'none'
                               window.location.href = 'dashboard'
                         },
@@ -272,16 +276,16 @@
                         type: 'POST',
                         data: JSON.stringify(Data), //headers: { "Content-Type": "application/json" },
                         dataType: "json",
-                        success: (res) => {
+                        success: async (res) => {
                               console.log('login for ' + Data.username + ' sent. - success')
                               console.info(res)
                               console.info(res.data.keepSigned)
                               var date = new Date(res.data.keepSigned);
 
                               console.log('setting cookies')
-                              $.cookie('__auth-tk', res.data.AuthToken, { expires: date })
-                              $.cookie('__user-wa', res.data.address, { expires: date })
-                              $.cookie('__user-un', res.data.username, { expires: date })
+                              await $.cookie('__auth-tk', res.data.AuthToken, { expires: date })
+                              await $.cookie('__user-wa', res.data.address, { expires: date })
+                              await $.cookie('__user-un', res.data.username, { expires: date })
                               document.getElementById('login-loading').style.display = 'none'
                               window.location.href = 'dashboard'
                         },

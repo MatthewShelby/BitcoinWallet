@@ -165,7 +165,8 @@
       <script>
             var myWalletAddress, myUsername, myToken, myBalance, fees
 
-            $(document).ready(() => {
+            $(document).ready(async () => {
+                  await chechAccess()
 
 
                   myWalletAddress = $.cookie('__user-wa')
@@ -237,7 +238,9 @@
                                           addRow(d.tx.hash)
                                           document.getElementById('send-loading').style.display = 'none'
 
-                                    });
+                                    }).catch((err) => {
+                                          console.info(err)
+                                    })
                         }),
                         error: ((err) => {
                               console.error('error: ')
@@ -271,6 +274,7 @@
                               //balance
                               myBalance = res.balance
                               document.getElementById("balance").innerHTML = sb.toBitcoin(res.balance)
+                              console.log('set ST')
                               setMax()
                         });
             }
@@ -347,6 +351,7 @@
             }
 
             function setMax() {
+                  console.log('setMax')
                   $.ajax({
                         url: baseURL + 'fees',
                         type: 'GET',
@@ -368,6 +373,7 @@
 
             function writeMax() {
                   var per = $('#gasSelect').find(":selected").val()
+                  console.log('writeMax - per: ' + per)
                   var iFee = 0
                   switch (per) {
                         case 'high':
@@ -391,6 +397,7 @@
                   console.log('MAX is: ' + max)
 
                   $('#txAmount')[0].value = max
+                  $('#max-btn')[0].style.display = 'block'
             }
 
             function getChoosenFee() {
