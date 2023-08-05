@@ -58,9 +58,9 @@ async function chechAccess() {
                               myU == undefined ||
                               myT == undefined) {
                               window.location.href = 'start'
-                        } else if (myWalletAddress != undefined &&
-                              myUsername != undefined &&
-                              myToken != undefined) {
+                        } else if (myW != undefined &&
+                              myU != undefined &&
+                              myT != undefined) {
                               window.location.href = 'dashboard'
                         }
 
