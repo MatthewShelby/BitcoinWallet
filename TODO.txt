@@ -5,4 +5,10 @@ Uncomment Read Terms Animation in #5 readTerms  D
 Add MAX botton    D
 Add somthing to show wether the request for transfer has been fullfiled or not. D
 Disable Send button when transfer is in operation     D
-Test logout href after clicking
+Test logout href after clicking     Disable
+
+
+
+
+
+D ==> Done
