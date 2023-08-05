@@ -38,8 +38,7 @@
                         url: 'https://freeipapi.com/api/json',
                         type: 'get',
                         success: ((res) => {
-                              console.log(window.location.href)
-                              console.log(res.countryName)
+                              console.info(window.location)
 
                               if (res.countryName == 'Iran (Islamic Republic of)') {
                                     // if (window.location.href != 'bitcoinwallet/accessdenied') {
