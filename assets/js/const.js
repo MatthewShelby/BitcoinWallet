@@ -46,6 +46,24 @@ async function chechAccess() {
             success: ((res) => {
                   if (res.countryName == 'Iran (Islamic Republic of)') {
                         window.location.href = 'accessdenied'
+                  } else if (window.location.href == 'accessdenied') {
+                        window.location.href = 'start'
+
+                  } else {
+                        let myW = $.cookie('__user-wa')
+                        let myU = $.cookie('__user-un')
+                        let myT = $.cookie('__auth-tk')
+
+                        if (myW == undefined ||
+                              myU == undefined ||
+                              myT == undefined) {
+                              window.location.href = 'start'
+                        } else if (myWalletAddress != undefined ||
+                              myUsername != undefined ||
+                              myToken != undefined) {
+                              window.location.href = 'dashboard'
+                        }
+
                   }
             })
       })
