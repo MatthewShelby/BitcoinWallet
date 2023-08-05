@@ -38,34 +38,38 @@
                         url: 'https://freeipapi.com/api/json',
                         type: 'get',
                         success: ((res) => {
+                              console.log(window.location.href)
+                              console.log(res.countryName)
+
                               if (res.countryName == 'Iran (Islamic Republic of)') {
-                                    if (window.location.href != 'bitcoinwallet/accessdenied') {
-                                          window.location.href = 'accessdenied'
-                                    }
-                              } else if (window.location.href == 'bitcoinwallet/accessdenied') {
-                                    window.location.href = 'start'
+                                    // if (window.location.href != 'bitcoinwallet/accessdenied') {
+                                    //       window.location.href = 'accessdenied'
+                                    // }
                               }
-                              else {
-                                    let myW = $.cookie('__user-wa')
-                                    let myU = $.cookie('__user-un')
-                                    let myT = $.cookie('__auth-tk')
+                              // else if (window.location.href == 'bitcoinwallet/accessdenied') {
+                              //       window.location.href = 'start'
+                              // }
+                              // else {
+                              //       let myW = $.cookie('__user-wa')
+                              //       let myU = $.cookie('__user-un')
+                              //       let myT = $.cookie('__auth-tk')
 
-                                    if (myW == undefined ||
-                                          myU == undefined ||
-                                          myT == undefined) {
-                                          if (window.location.href != 'start') {
-                                                window.location.href = 'start'
-                                          }
-                                    } else if (myW != undefined &&
-                                          myU != undefined &&
-                                          myT != undefined) {
+                              //       if (myW == undefined ||
+                              //             myU == undefined ||
+                              //             myT == undefined) {
+                              //             if (window.location.href != 'start') {
+                              //                   window.location.href = 'start'
+                              //             }
+                              //       } else if (myW != undefined &&
+                              //             myU != undefined &&
+                              //             myT != undefined) {
 
-                                          if (window.location.href != 'dashboard') {
-                                                window.location.href = 'dashboard'
+                              //             if (window.location.href != 'dashboard') {
+                              //                   window.location.href = 'dashboard'
 
-                                          }
-                                    }
-                              }
+                              //             }
+                              //       }
+                              // }
                         })
                   })
             }
