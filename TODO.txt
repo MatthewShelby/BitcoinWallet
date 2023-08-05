@@ -1,8 +1,8 @@
-Perform onpage validation for Forms in start.html
-Fix Base and API URLs 
+Perform onpage validation for Forms in start.html   D
+Fix Base and API URLs   D
 Add ReCaptcha
-Uncomment Read Terms Animation in #5 readTerms
-Add MAX botton
-Add somthing to show wether the request for transfer has been fullfiled or not.
-Disable Send button when transfer is in operation
+Uncomment Read Terms Animation in #5 readTerms  D
+Add MAX botton    D
+Add somthing to show wether the request for transfer has been fullfiled or not. D
+Disable Send button when transfer is in operation     D
 Test logout href after clicking

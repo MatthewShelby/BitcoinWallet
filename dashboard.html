@@ -66,17 +66,18 @@
                               <div class="sub-board-child">
                                     <label class="sb-title">Destination Address:</label>
                                     <input type="text" class="amount-input " style="width: 32rem;"
-                                          placeholder="mv4rn....." id="destAddress">
+                                          placeholder="13dN2u...." id="destAddress">
 
                               </div>
 
                               <div class="sub-board-child">
 
                                     <label class="sb-title">Gas fee:</label>
-                                    <select name="gasfee" class="gasfee-input" id="gasSelect">
+                                    <select name="gasfee" class="gasfee-input" id="gasSelect" onchange="checkOption()">
                                           <option value="med">Normal</option>
                                           <option value="low">Low / Slow</option>
                                           <option value="high">High / Fast</option>
+                                          <option value="custom">Custom Value</option>
                                     </select>
 
                               </div>
@@ -180,7 +181,7 @@
                   if (myWalletAddress == undefined ||
                         myUsername == undefined ||
                         myToken == undefined) {
-                        window.location.href = '/start'
+                        window.location.href = 'start'
                   }
 
                   console.log($.cookie('__auth-tk') + ' - ' + $.cookie('__user-wa'))
@@ -199,6 +200,7 @@
             var firstAddressLengthError = false
             function Transfer() {
                   document.getElementById('send-loading').style.display = 'block'
+                  $('#TransferSend').attr("disabled", true)
 
                   //34
                   var adr = $('#destAddress')[0].value
@@ -209,12 +211,18 @@
                               window.alert('Destination address seems too short. Please recheck it.')
                               firstAddressLengthError = true
                               document.getElementById('send-loading').style.display = 'none'
+                              $('#TransferSend').removeAttr("disabled")
+
+
                               return;
                         }
                   }
                   if (am <= 0) {
                         window.alert('Amount must be greater then zero.')
                         document.getElementById('send-loading').style.display = 'none'
+                        $('#TransferSend').removeAttr("disabled")
+
+
                         return;
                   }
                   var data = {
@@ -223,37 +231,65 @@
                         periority: per,
                         token: myToken,
                         username: myUsername,
-                        gassAmount: getChoosenFee()
+                        gasAmount: getChoosenFee()
                   }
                   console.info(data)
+                  text = "Do you confirm the transaction with this inputs:\n" +
+                        "Amount: " + am + "\n" +
+                        "Gas Amount: " + data.gasAmount + "\n" +
+                        "periority: " + per + "\n" +
+                        "destination: " + adr + "\n"
+                        ;
+                  if (confirm(text) == true) {
 
-                  $.ajax({
-                        url: baseURL + 'transfer',
-                        type: 'POST',
-                        data: JSON.stringify(data),
-                        success: ((res) => {
-                              console.log('transfer success res:')
-                              console.info(res)
-                              var tx = { tx: res.data.tx }
-                              console.info(tx)
-                              $.post(pushTX, JSON.stringify(tx))
-                                    .then(function (d) {
-                                          console.log(d)
-                                          addRow(d.tx.hash)
-                                          document.getElementById('send-loading').style.display = 'none'
 
-                                    }).catch((err) => {
-                                          console.info(err)
-                                    })
-                        }),
-                        error: ((err) => {
-                              console.error('error: ')
-                              console.info(err)
-                              window.alert(err.errorText || unknown)
-                              document.getElementById('send-loading').style.display = 'none'
+                        $.ajax({
+                              url: baseURL + 'transfer',
+                              type: 'POST',
+                              // data: JSON.stringify(data),
+                              success: ((res) => {
+                                    console.log('transfer success res:')
+                                    console.info(res)
+                                    var tx = { tx: res.data.tx }
+                                    console.info(tx)
+                                    $.post(pushTX, JSON.stringify(tx))
+                                          .then(function (d) {
+                                                console.log(d)
+                                                addRow(d.tx.hash)
+                                                document.getElementById('send-loading').style.display = 'none'
+                                                $('#TransferSend').removeAttr("disabled")
 
+
+                                                window.alert('Transfer Successfull.')
+
+                                          }).catch((err) => {
+                                                console.info(err)
+                                                window.alert(err.errorText || unknown)
+                                                document.getElementById('send-loading').style.display = 'none'
+
+                                                $('#TransferSend').removeAttr("disabled")
+
+
+                                          })
+                              }),
+                              error: ((err) => {
+                                    console.error('error: ')
+                                    console.info(err)
+                                    window.alert(err.errorText || unknown)
+                                    document.getElementById('send-loading').style.display = 'none'
+                                    $('#TransferSend').removeAttr("disabled")
+
+
+
+                              })
                         })
-                  })
+
+                  } else {
+                        document.getElementById('send-loading').style.display = 'none'
+                        $('#TransferSend').removeAttr("disabled")
+
+
+                  }
 
             }
 
@@ -397,7 +433,10 @@
                         case 'low':
                               iFee = fees.low
                               break;
-
+                        case 'custom':
+                              console.log('case:  custom  value: ' + customFee)
+                              iFee = sb.toSatoshi(customFee)
+                              break;
                         default:
                               break;
                   }
@@ -405,7 +444,7 @@
                   console.log('Number(myBalance) is: ' + sb.toBitcoin(Number(myBalance)))
                   console.log('sb.toBitcoin(Number(iFee)) is: ' + sb.toBitcoin(Number(iFee)))
 
-                  var max = sb.toBitcoin(Number(myBalance)) - sb.toBitcoin(Number(iFee))
+                  var max = sb.toBitcoin(myBalance - iFee)
                   console.log('MAX is: ' + max)
 
                   $('#txAmount')[0].value = max
@@ -425,6 +464,9 @@
                         case 'low':
                               iFee = fees.low
                               break;
+                        case 'custom':
+                              iFee = customFee
+                              break;
 
                         default:
                               break;
@@ -440,6 +482,16 @@
                   $.cookie('__user-un', '')
                   window.location.href = 'start'
             }
+
+            function checkOption() {
+                  var per = $('#gasSelect').find(":selected").val()
+                  if (per == 'custom') {
+                        let customGas = Number(prompt("Please enter your desired amount in BTC"));
+                        console.log('Cutom gas: ' + customGas)
+                        customFee = customGas
+                  }
+            }
+            var customFee = 0;
             //mwJZw1qiRdrr22qFUEvbgXDXGfSQz1WkdG
       </script>
 </body>

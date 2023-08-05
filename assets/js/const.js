@@ -4,7 +4,7 @@ const APIURL = 'https://api.blockcypher.com/v1/btc/main/'
 const pushTX = APIURL + 'txs/push'
 const balanceURL = APIURL + 'addrs/'
 
-const explorTXURL = 'https://live.blockcypher.com/btc-testnet/tx/'
+const explorTXURL = 'https://live.blockcypher.com/btc/tx/'
 
 const unknown = 'An unknown error happend. please try later.'
 
@@ -45,7 +45,7 @@ async function chechAccess() {
             type: 'get',
             success: ((res) => {
                   if (res.countryName == 'Iran (Islamic Republic of)') {
-                        window.location.href = './accessdenied'
+                        window.location.href = 'accessdenied'
                   }
             })
       })
