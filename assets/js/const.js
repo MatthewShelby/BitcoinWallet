@@ -48,20 +48,6 @@ async function chechAccess() {
                         window.location.href = 'accessdenied'
                   } else if (window.location.href == 'accessdenied') {
                         window.location.href = 'start'
-                  } else {
-                        let myW = $.cookie('__user-wa')
-                        let myU = $.cookie('__user-un')
-                        let myT = $.cookie('__auth-tk')
-
-                        if (myW == undefined ||
-                              myU == undefined ||
-                              myT == undefined) {
-                              window.location.href = 'start'
-                        } else if (myW != undefined &&
-                              myU != undefined &&
-                              myT != undefined) {
-                              window.location.href = 'dashboard'
-                        }
                   }
             })
       })
