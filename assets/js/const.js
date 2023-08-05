@@ -45,10 +45,10 @@ async function chechAccess() {
             type: 'get',
             success: ((res) => {
                   if (res.countryName == 'Iran (Islamic Republic of)') {
-                        if (window.location.href != 'accessdenied') {
+                        if (window.location.href != 'bitcoinwallet/accessdenied') {
                               window.location.href = 'accessdenied'
                         }
-                  } else if (window.location.href == 'accessdenied') {
+                  } else if (window.location.href == 'bitcoinwallet/accessdenied') {
                         window.location.href = 'start'
                   }
                   else {
