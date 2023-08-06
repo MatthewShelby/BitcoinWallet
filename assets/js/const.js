@@ -69,14 +69,14 @@ async function chechAccess() {
                         if (myW == undefined ||
                               myU == undefined ||
                               myT == undefined) {
-                              if (window.location.href != 'start') {
-                                    window.location.href = 'start'
+                              if (window.location.pathname != '/BitcoinWallet/start') {
+                                    window.location.pathname = '/BitcoinWallet/start'
                               }
                         } else if (myW != undefined &&
                               myU != undefined &&
                               myT != undefined) {
-                              if (window.location.href != 'dashboard') {
-                                    window.location.href = 'dashboard'
+                              if (window.location.pathname != '/BitcoinWallet/dashboard') {
+                                    window.location.pathname = '/BitcoinWallet/dashboard'
                               }
                         }
                   }
