@@ -53,9 +53,23 @@ async function chechAccess() {
                         if (window.location.hostname == "127.0.0.1") {
                               console.log('#0')
                               //window.location.href = 'accessdenied'
-                        } else if (window.location.pathname != '/BitcoinWallet/accessdenied') {
+                        } else if (window.location.hostname != 'matthewshelby.github.io') {
                               console.log('#1')
                               //window.location.pathname = '/BitcoinWallet/accessdenied'
+                        }
+                  } else {
+                        let myW = $.cookie('__user-wa')
+                        let myU = $.cookie('__user-un')
+                        let myT = $.cookie('__auth-tk')
+                        console.log('myW: ' + myW)
+                        console.log('myU: ' + myU)
+                        console.log('myT: ' + myT)
+                        if (myW == undefined ||
+                              myU == undefined ||
+                              myT == undefined) {
+                              if (window.location.href != 'start') {
+                                    window.location.href = 'start'
+                              }
                         }
                   }
 
