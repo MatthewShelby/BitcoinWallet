@@ -72,7 +72,7 @@ async function chechAccess() {
                               if (window.location.href != 'start') {
                                     window.location.href = 'start'
                               }
-                        } else (myW != undefined &&
+                        } else if (myW != undefined &&
                               myU != undefined &&
                               myT != undefined) {
                               if (window.location.href != 'dashboard') {
