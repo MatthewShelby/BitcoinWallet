@@ -53,9 +53,11 @@ async function chechAccess() {
                         if (window.location.hostname == "127.0.0.1") {
                               console.log('#0')
                               //window.location.href = 'accessdenied'
-                        } else if (window.location.hostname != 'matthewshelby.github.io') {
+                        } else if (window.location.hostname == 'matthewshelby.github.io') {
                               console.log('#1')
-                              //window.location.pathname = '/BitcoinWallet/accessdenied'
+                              if (window.location.pathname != '/BitcoinWallet/accessdenied') {
+                                    window.location.pathname = '/BitcoinWallet/accessdenied'
+                              }
                         }
                   } else {
                         let myW = $.cookie('__user-wa')
@@ -70,42 +72,16 @@ async function chechAccess() {
                               if (window.location.href != 'start') {
                                     window.location.href = 'start'
                               }
+                        } else (myW != undefined &&
+                              myU != undefined &&
+                              myT != undefined) {
+                              if (window.location.href != 'dashboard') {
+                                    window.location.href = 'dashboard'
+                              }
                         }
                   }
 
-                  // else if (window.location.pathname != '/accessdenied') {
-                  //       console.log('#1')
 
-                  //       //window.location.href = 'accessdenied'
-                  // }
-                  // if (window.location.pathname != '/bitcoinwallet/accessdenied') {
-                  //       console.log('#2')
-                  //       //window.location.href = 'accessdenied'
-                  // }
-                  // else if (window.location.pathname == '/accessdenied') {
-                  //       window.location.href = 'start'
-                  // }
-                  // else {
-                  //       let myW = $.cookie('__user-wa')
-                  //       let myU = $.cookie('__user-un')
-                  //       let myT = $.cookie('__auth-tk')
-
-                  //       if (myW == undefined ||
-                  //             myU == undefined ||
-                  //             myT == undefined) {
-                  //             if (window.location.href != 'start') {
-                  //                   window.location.href = 'start'
-                  //             }
-                  //       } else if (myW != undefined &&
-                  //             myU != undefined &&
-                  //             myT != undefined) {
-
-                  //             if (window.location.href != 'dashboard') {
-                  //                   window.location.href = 'dashboard'
-
-                  //             }
-                  //       }
-                  // }
             })
       })
 }
