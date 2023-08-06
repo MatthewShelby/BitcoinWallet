@@ -44,14 +44,18 @@ async function chechAccess() {
             url: 'https://freeipapi.com/api/json',
             type: 'get',
             success: ((res) => {
+                  console.log('res.countryName: ' + res.countryName)
+                  console.log('window.location.hostname: ' + window.location.hostname)
+                  console.log('window.location.href: ' + window.location.href)
+
                   if (res.countryName == 'Iran (Islamic Republic of)') {
-                        if (window.location.pathname != '/BitcoinWallet/accessdenied') {
+
+                        if (window.location.hostname == "127.0.0.1") {
                               console.log('#0')
-                              window.location.pathname = '/BitcoinWallet/accessdenied'
-                        }
-                        if (window.location.hostname == "127.0.0.1" && window.location.pathname != '/accessdenied') {
-                              console.log('#0')
-                              window.location.href = '/accessdenied'
+                              //window.location.href = 'accessdenied'
+                        } else if (window.location.pathname != '/BitcoinWallet/accessdenied') {
+                              console.log('#1')
+                              //window.location.pathname = '/BitcoinWallet/accessdenied'
                         }
                   }
 

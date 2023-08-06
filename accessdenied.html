@@ -30,47 +30,10 @@
       <script>
 
             $(document).ready(async () => {
-                  await chechAccess2()
+                  await chechAccess()
             })
 
-            async function chechAccess2() {
-                  await $.ajax({
-                        url: 'https://freeipapi.com/api/json',
-                        type: 'get',
-                        success: ((res) => {
-                              console.info(window.location)
 
-                              if (res.countryName == 'Iran (Islamic Republic of)') {
-                                    // if (window.location.href != 'bitcoinwallet/accessdenied') {
-                                    //       window.location.href = 'accessdenied'
-                                    // }
-                              }
-                              // else if (window.location.href == 'bitcoinwallet/accessdenied') {
-                              //       window.location.href = 'start'
-                              // }
-                              // else {
-                              //       let myW = $.cookie('__user-wa')
-                              //       let myU = $.cookie('__user-un')
-                              //       let myT = $.cookie('__auth-tk')
 
-                              //       if (myW == undefined ||
-                              //             myU == undefined ||
-                              //             myT == undefined) {
-                              //             if (window.location.href != 'start') {
-                              //                   window.location.href = 'start'
-                              //             }
-                              //       } else if (myW != undefined &&
-                              //             myU != undefined &&
-                              //             myT != undefined) {
-
-                              //             if (window.location.href != 'dashboard') {
-                              //                   window.location.href = 'dashboard'
-
-                              //             }
-                              //       }
-                              // }
-                        })
-                  })
-            }
       </script>
 </body>
