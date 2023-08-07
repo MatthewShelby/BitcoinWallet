@@ -330,7 +330,9 @@
             }
 
             function goHome() {
-                  window.location.href = '/'
+                  if (window.location.pathname == '/BitcoinWallet/start') {
+                        window.location.pathname = '/BitcoinWallet '
+                  }
             }
       </script>
 </body>
