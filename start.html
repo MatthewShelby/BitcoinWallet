@@ -17,13 +17,19 @@
             .logo h1 i {
                   color: #fff;
             }
+
+            .flex {
+                  display: flex;
+            }
       </style>
       <div class="page-layout-2">
-            <div class="logo pointer" onclick="goHome()">
-                  <div class="logo-img">
-                        <img src="./assets/images/logo/BTC.png" alt="">
-                  </div>
-                  <h1><i> Bitcoin Wallet</i></h1>
+            <div class="logo ">
+                  <span onclick="goHome()" class="flex pointer">
+                        <div class="logo-img">
+                              <img src="./assets/images/logo/BTC.png" alt="">
+                        </div>
+                        <h1><i> Bitcoin Wallet</i></h1>
+                  </span>
             </div>
             <div class="forms">
                   <div class="form">
@@ -324,7 +330,7 @@
             }
 
             function goHome() {
-                  window.location.href = ''
+                  window.location.href = '/'
             }
       </script>
 </body>
