@@ -69,7 +69,7 @@ async function chechAccess() {
                         if (myW == undefined ||
                               myU == undefined ||
                               myT == undefined) {
-                              if (window.location.pathname != '/BitcoinWallet/start') {
+                              if (window.location.pathname == '/BitcoinWallet/dashboard') {
                                     window.location.pathname = '/BitcoinWallet/start'
                               }
                         } else if (myW != undefined &&
