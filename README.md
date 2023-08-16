@@ -35,7 +35,7 @@ Your feedback is highly valuable! If you encounter any issues, have suggestions 
 
 ## Contact
 
-For any inquiries or collaboration opportunities, you can reach out to [Your Email Address].
+For any inquiries or collaboration opportunities, you can reach out to [matthewShelB@gmail.com](mailto:matthewShelB@gmail.com).
 
 
 ## License
