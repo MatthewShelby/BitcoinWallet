@@ -4,7 +4,7 @@ Welcome to the Bitcoin Wallet MVP project! This repository contains an MVP (Mini
 
 ## Overview
 
-The Bitcoin Wallet MVP is a project developed by [Your Name] to provide users with a basic custodial wallet experience for managing Bitcoin assets. It serves as a technical showcase of integrating HD wallet structure and interacting with the Bitcoin blockchain.
+The Bitcoin Wallet MVP is a project developed by Metthew Shelby to provide users with a basic custodial wallet experience for managing Bitcoin assets. It serves as a technical showcase of integrating HD wallet structure and interacting with the Bitcoin blockchain.
 
 ## Features
 
@@ -19,11 +19,15 @@ The Bitcoin Wallet MVP is a project developed by [Your Name] to provide users wi
 ## Getting Started
 
 To explore the Bitcoin Wallet MVP, follow these steps:
+ 
 
-1. Clone this repository to your local machine.
-2. Install the required dependencies using [dependency manager].
-3. Run the application by [command to run].
-4. Access the wallet interface through your web browser.
+
+1. Go to https://matthewshelby.github.io/BitcoinWallet/ and sign up as a new user.
+2. Copy your wallet address from the dashboard to receive funds.
+3. Fill the transfer form to send funds to another Bitcoin address.
+4. Check your transactions in the explorer at the bottom of your dashboard.
+
+
 
 ## Feedback and Contributions
 
@@ -33,6 +37,17 @@ Your feedback is highly valuable! If you encounter any issues, have suggestions 
 
 For any inquiries or collaboration opportunities, you can reach out to [Your Email Address].
 
+
 ## License
 
-This project is licensed under the [License Name] - see the [LICENSE](LICENSE) file for details.
+The project has been developed under no license.
+
+## Terms of Use
+
+Important Information for Users:
+
+- No Account Recovery: Our platform does not collect any personal credentials, such as email addresses or phone numbers. As a result, we have no means of recovering lost or forgotten account information. Please take extra care to safeguard your login details as account recovery is not possible.
+
+- Transfer Policy: When you transfer funds into your account, please be aware that you can only transfer them out to another Bitcoin address. There is no option for refunds or account withdrawal. Transfers within the platform are solely allowed to Bitcoin addresses.
+
+Thank you for your understanding and cooperation. Should you have any questions or concerns, please don't hesitate to reach out to me.
