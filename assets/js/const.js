@@ -63,24 +63,32 @@ async function chechAccess() {
                         let myW = $.cookie('__user-wa')
                         let myU = $.cookie('__user-un')
                         let myT = $.cookie('__auth-tk')
+
                         console.log('myW: ' + myW)
                         console.log('myU: ' + myU)
                         console.log('myT: ' + myT)
-                        if (myW == undefined ||
-                              myU == undefined ||
-                              myT == undefined) {
+
+                        if (myW == undefined || myU == undefined || myT == undefined) {
+                              console.log('#01')
                               if (window.location.pathname == '/BitcoinWallet/dashboard') {
-                                    window.location.pathname = '/BitcoinWallet/start'
+                                    console.log('#02')
+
+                                    //window.location.pathname = '/BitcoinWallet/start'
                               }
                               if (window.location.pathname == '/BitcoinWallet/accessdenied') {
-                                    window.location.pathname = '/BitcoinWallet/start'
+                                    console.log('#03')
+
+                                    //window.location.pathname = '/BitcoinWallet/start'
                               }
                         } else if (myW != undefined &&
                               myU != undefined &&
                               myT != undefined) {
                               if (window.location.pathname != '/BitcoinWallet/dashboard') {
-                                    window.location.pathname = '/BitcoinWallet/dashboard'
+                                    //window.location.pathname = './dashboard'
                               }
+                              // if (window.location.pathname != '/BitcoinWallet/dashboard') {
+                              //       window.location.pathname = '/BitcoinWallet/dashboard'
+                              // }
                         }
                   }
 

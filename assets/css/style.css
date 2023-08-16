@@ -371,3 +371,92 @@ a {
 
 
 }
+
+
+@media only screen and (max-width: 600px) {
+      .only-desktop {
+            display: none !important;
+      }
+
+      .forms {
+            display: block !important;
+            padding: 2vh 4vw 1vh 4vw;
+            justify-content: space-around;
+      }
+
+      .disc2 {
+            padding: 0rem 1rem 1rem 2rem;
+      }
+
+      .disc {
+            padding: 2rem 1rem 2rem 2rem;
+      }
+
+      .explain {
+            padding: 15rem 1rem 2rem 2rem;
+      }
+
+      .get-started-sertion {
+            padding: 2rem 1rem 2rem 2rem;
+      }
+
+      .footer {
+            padding: 1rem;
+            box-sizing: border-box;
+      }
+
+      .action-btn {
+            padding: 12px 24px;
+            font-size: larger;
+      }
+
+      .start-btn {
+            padding: 12px 24px;
+            font-size: larger;
+      }
+
+      .board {
+            margin: 12px;
+            padding: 12px 12px 12px 12px;
+      }
+
+      .board-body {
+            display: block !important;
+      }
+
+      .sub-board {
+            margin: 12px 12px 12px 12px;
+      }
+
+      .sb-data {
+            line-break: anywhere;
+      }
+
+      .sub-board-row {
+            display: block !important;
+      }
+
+      .amount-input {
+            width: auto !important;
+      }
+
+      .recent-adr {
+            line-break: anywhere;
+      }
+
+      .sb-data-recent {
+            line-break: anywhere;
+      }
+
+      .recent-title-frame {
+            display: block !important;
+      }
+}
+
+
+@media only screen and (min-width: 600px) {
+      .only-phone {
+            display: none;
+      }
+
+}

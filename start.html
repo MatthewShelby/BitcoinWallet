@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-      <title>Bitcoin Wallet - home</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Bitcoin Wallet - Satrt</title>
       <link rel="stylesheet" href="assets/css/fonts.css">
       <link rel="stylesheet" href="assets/css/style.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +33,8 @@
                         <h1><i> Bitcoin Wallet</i></h1>
                   </span>
             </div>
+
+
             <div class="forms">
                   <div class="form">
                         <div class="form-title-frame">
@@ -47,6 +51,8 @@
 
                                     <label for="password">Password:</label>
                                     <input type="password" autocomplete="new-password" id="reg-pass">
+
+                                    <br>
                                     <label for="repeat-password">Repeat Password:</label>
                                     <input type="password" autocomplete="new-password" id="reg-pass-rep">
                                     <br><br>
@@ -88,6 +94,7 @@
 
                                     <label for="password">Password:</label>
                                     <input type="password" autocomplete="password" id="login-pw">
+                                    <br>
                                     <label for="password">
                                           <input type="checkbox" autocomplete="remember-me" id="login-remember">Remember
                                           me</label>
@@ -181,6 +188,8 @@
                   checkNetwork()
                   document.getElementById('reg-check').addEventListener('click', regBtnCheck)
                   document.getElementById('login-check').addEventListener('click', loginBtnCheck)
+
+
             })
 
 
@@ -233,7 +242,7 @@
                               await $.cookie('__user-wa', res.data.address, { expires: date })
                               await $.cookie('__user-un', res.data.username, { expires: date })
                               document.getElementById('reg-loading').style.display = 'none'
-                              window.location.href = 'dashboard'
+                              window.location.href = './dashboard'
                         },
                         error: (res) => {
                               console.error('Record for ' + Data.username + ' Failed.')
@@ -292,7 +301,7 @@
                               await $.cookie('__user-wa', res.data.address, { expires: date })
                               await $.cookie('__user-un', res.data.username, { expires: date })
                               document.getElementById('login-loading').style.display = 'none'
-                              window.location.href = 'dashboard'
+                              window.location.href = './dashboard'
                         },
                         error: (res) => {
                               console.error('Record for ' + JSON.stringify(Data).username + ' Failed.')
