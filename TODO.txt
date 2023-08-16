@@ -1,6 +1,5 @@
 Perform onpage validation for Forms in start.html   D
 Fix Base and API URLs   D
-Add ReCaptcha
 Uncomment Read Terms Animation in #5 readTerms  D
 Add MAX botton    D
 Add somthing to show wether the request for transfer has been fullfiled or not. D
