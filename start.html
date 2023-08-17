@@ -180,8 +180,6 @@
                   checkNetwork()
                   document.getElementById('reg-check').addEventListener('click', regBtnCheck)
                   document.getElementById('login-check').addEventListener('click', loginBtnCheck)
-
-
             })
 
 
@@ -203,13 +201,11 @@
                   if (p1.length < 6) {
                         window.alert('Password must be at least 6 characters.')
                         document.getElementById('reg-loading').style.display = 'none'
-
                         return;
                   }
                   if (p1 != p2) {
                         window.alert('Password and Repeat password are not matched.')
                         document.getElementById('reg-loading').style.display = 'none'
-
                         return;
                   }
 
@@ -222,7 +218,7 @@
                   await $.ajax({
                         url: baseURL + 'register',
                         type: 'POST',
-                        data: JSON.stringify(Data), //headers: { "Content-Type": "application/json" },
+                        data: JSON.stringify(Data),
                         dataType: "json",
                         success: async (res) => {
                               console.log('register for ' + Data.username + ' sent. - success')
@@ -241,7 +237,6 @@
                               console.info(res)
                               window.alert(res.responseText || unknown)
                               document.getElementById('reg-loading').style.display = 'none'
-
                         }
                   })
             }
@@ -255,7 +250,7 @@
                   let pw = $('#login-pw')[0].value
                   let rm = $('#login-remember')[0].checked
                   let rt = $('#login-check')[0].checked
-
+                  console.log('un: ' + un + '  pw: ' + pw)
 
                   if (un.length < 6) {
                         window.alert('Username must be at least 6 characters.')
@@ -265,7 +260,6 @@
                   if (pw.length < 6) {
                         window.alert('Password must be at least 6 characters.')
                         document.getElementById('login-loading').style.display = 'none'
-
                         return;
                   }
 
@@ -300,7 +294,6 @@
                               console.info(res)
                               window.alert(res.responseText || unknown)
                               document.getElementById('login-loading').style.display = 'none'
-
                         }
                   })
             }
@@ -318,7 +311,7 @@
                   if (document.getElementById('reg-check').checked) {
                         document.getElementById('register-btn').disabled = false;
                   } else {
-                        document.getElementById('register-btn').disabled = true;
+                        document.getElementById('register-btn').disabled = false;
                   }
             }
 
@@ -336,12 +329,8 @@
                         window.location.href = './'
                   } else {
                         window.location.href = '/'
-
                   }
             }
-
-
-
       </script>
 </body>
 
