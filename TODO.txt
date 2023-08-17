@@ -5,6 +5,7 @@ Add MAX botton    D
 Add somthing to show wether the request for transfer has been fullfiled or not. D
 Disable Send button when transfer is in operation     D
 Test logout href after clicking     Disable
+Check part of redirect path on const.js => access check
 
 
 
