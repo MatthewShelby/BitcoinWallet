@@ -73,12 +73,12 @@ async function chechAccess() {
                               if (window.location.pathname == '/BitcoinWallet/dashboard') {
                                     console.log('#02')
 
-                                    //window.location.pathname = '/BitcoinWallet/start'
+                                    window.location.pathname = '/BitcoinWallet/start'
                               }
                               if (window.location.pathname == '/BitcoinWallet/accessdenied') {
                                     console.log('#03')
 
-                                    //window.location.pathname = '/BitcoinWallet/start'
+                                    window.location.pathname = '/BitcoinWallet/start'
                               }
                         } else if (myW != undefined &&
                               myU != undefined &&
