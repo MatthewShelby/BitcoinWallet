@@ -480,10 +480,10 @@
             }
 
             function logout() {
-                  $.cookie('__auth-tk', '')
-                  $.cookie('__user-wa', '')
-                  $.cookie('__user-un', '')
-                  window.location.href = 'start'
+                  $.cookie('__auth-tk', null)
+                  $.cookie('__user-wa', null)
+                  $.cookie('__user-un', null)
+                  window.location.href = './start'
             }
 
             function checkOption() {
