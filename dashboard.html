@@ -480,9 +480,9 @@
             }
 
             function logout() {
-                  $.cookie('__auth-tk', null)
-                  $.cookie('__user-wa', null)
-                  $.cookie('__user-un', null)
+                  $.removeCookie('__auth-tk', null)
+                  $.removeCookie('__user-wa', null)
+                  $.removeCookie('__user-un', null)
                   window.location.href = './start'
             }
 
